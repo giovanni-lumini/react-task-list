@@ -85,11 +85,11 @@ export default function AppMain() {
     console.log(current_task_length);
 
     //markup
-    const current_task_markup = current_task.forEach((task) => {
-        let markup = `
-            <div className="title">{task.title}</div>
-            <div className="priority">{task.priority}</div>
-            <div className="estimated_time">{task.estimatedTime}</div>
+    const current_task_markup = current_task.map((task) => {
+        const markup = `
+            <div className="title">${task.title}</div>
+            <div className="priority">${task.priority}</div>
+            <div className="estimated_time">${task.estimatedTime}</div>
         `
         return markup
     })
