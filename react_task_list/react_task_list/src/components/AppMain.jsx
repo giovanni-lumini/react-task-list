@@ -80,18 +80,22 @@ export default function AppMain() {
         }
         return false
     });
-    console.log(current_task);
     const current_task_length = current_task.length
-    console.log(current_task_length);
+    /* console.log(current_task);
+    console.log(current_task_length); */
 
-    //markup
     const current_task_markup = current_task.map((task) => {
-        const markup = `
-            <div className="title">${task.title}</div>
-            <div className="priority">${task.priority}</div>
-            <div className="estimated_time">${task.estimatedTime}</div>
-        `
-        return markup
+        const task_markup = (
+            <div className="task">
+                <div className="flex">
+                    <div className="title">{task.title}</div>
+                    <div className="state">{task.state}</div>
+                </div>
+                <div className="priority">Priority: {task.priority}</div>
+                <div className="estimated_time">Est. Time: {task.estimatedTime} mins</div>
+            </div>
+        );
+        return task_markup
     })
 
     //completed task (filter)
@@ -101,24 +105,38 @@ export default function AppMain() {
         }
         return false
     });
-    /* console.log(completed_task);
     const completed_task_length = completed_task.length
+    /* console.log(completed_task);
     console.log(completed_task_length); */
 
-
-
+    const completed_task_markup = completed_task.map((task) => {
+        const task_markup = (
+            <div className="task">
+                <div className="flex">
+                    <div className="title">{task.title}</div>
+                    <div className="state">{task.state}</div>
+                </div>
+                <div className="priority">Priority: {task.priority}</div>
+                <div className="estimated_time">Est. Time: {task.estimatedTime} mins</div>
+            </div>
+        );
+        return task_markup
+    })
 
 
     //markup
     return (
         <main>
             <section className="current_task">
-                <h3>Current Task</h3>
+                <h3 className="task_count">Current Task ({current_task_length})</h3>
                 <div>{current_task_markup}</div>
             </section>
 
+            <hr className="hr" />
+
             <section className="completed_task">
-                <h3>Completed Task</h3>
+                <h3 className="task_count">Completed Task ({completed_task_length})</h3>
+                <div>{completed_task_markup}</div>
             </section>
         </main>
     )
