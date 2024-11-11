@@ -3,7 +3,7 @@ export default function AppMain() {
     //markup
     return (
         <main>
-
+            main
         </main>
     )
 }
